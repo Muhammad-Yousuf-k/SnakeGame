@@ -10,7 +10,7 @@ const highscoreEle = document.getElementById("Highscore")
 const timeEle = document.getElementById("time")
 
 
-let speed = 100
+let speed = 200
 const blockH = 30
 const blockW = 30
 const cols = Math.floor(board.clientWidth / blockW)
@@ -36,7 +36,7 @@ for (let row = 0; row < rows; row++) {
         const block = document.createElement("div")
         block.classList.add("block")
         board.appendChild(block)
-        // block.innerText = `${row}-${col}`
+        block.innerText = `${row}-${col}`
         blocks[`${row}-${col}`] = block
     }
 }
