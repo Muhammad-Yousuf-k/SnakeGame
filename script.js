@@ -18,7 +18,7 @@ const rows = Math.floor(board.clientHeight / blockH)
 let setIntervalId = null
 let timerIntervalId = null
 let food = { x: Math.floor(Math.random() * rows), y: Math.floor(Math.random() * cols) }
-blocks = []
+let blocks = []
 snake = [{ x: 1, y: 3 }]
 let highScore = localStorage.getItem("highscore") || 0
 let score = 0
@@ -106,7 +106,8 @@ function render() {
     });
 }
 
-startBtn.addEventListener("click", () => {
+startBtn.addEventListener("click", startGame)
+function startGame() {
     modal.style.display = "none"
     setIntervalId = setInterval(() => { render() }, speed)
     timerIntervalId = setInterval(() => {
@@ -122,11 +123,8 @@ startBtn.addEventListener("click", () => {
         timeEle.innerText = time
 
     }, 1000)
+}
 
-
-
-
-})
 
 restartBtn.addEventListener("click", restartGame)
 function restartGame() {
@@ -167,16 +165,15 @@ function restartGame() {
 
 
 addEventListener("keydown", (event) => {
+    console.log(event.key);
 
-    if (event.key == "ArrowUp") {
-        direction = "up"
-    } else if (event.key == "ArrowDown") {
-        direction = "down"
-    } else if (event.key == "ArrowRight") {
-        direction = "right"
-    } else if (event.key == "ArrowLeft") {
-        direction = "left"
+    if (event.key == "ArrowUp" || event.key == "w" || event.key == "W") {
+        direction = "up";
+    } else if (event.key == "ArrowDown" || event.key == "s" || event.key == "S") {
+        direction = "down";
+    } else if (event.key == "ArrowRight" || event.key == "d" || event.key == "D") {
+        direction = "right";
+    } else if (event.key == "ArrowLeft" || event.key == "a" || event.key == "A") {
+        direction = "left";
     }
-
-
-})
+});
